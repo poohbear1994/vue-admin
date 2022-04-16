@@ -1,4 +1,4 @@
-# admin
+# imooc-admin
 
 ## Project setup
 ```
