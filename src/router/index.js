@@ -3,11 +3,15 @@ import {
   createWebHashHistory
 } from 'vue-router'
 
-const routes = []
+// 公开路由表
+const publicRoutes = [{
+  path: '/login',
+  component: () => import('../views/login/index.vue')
+}]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: publicRoutes
 })
 
 export default router
