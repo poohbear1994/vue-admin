@@ -7,9 +7,7 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <svg-icon icon="https://res.lgdsunday.club/user.svg"></svg-icon>
         </span>
         <el-input
           placeholder="username"
@@ -23,7 +21,7 @@
       <el-form-item prop="password">
         <span class="svg-container">
           <el-icon>
-            <avatar />
+            <svg-icon icon="password" />
           </el-icon>
         </span>
         <el-input
@@ -34,7 +32,7 @@
         />
         <span class="show-pwd">
           <el-icon>
-            <avatar />
+            <svg-icon icon="eye" />
           </el-icon>
         </span>
       </el-form-item>
@@ -46,11 +44,7 @@
   </div>
 </template>
 
-<script setup>
-// 导入组件之后无需注册可直接使用
-import { Avatar } from '@element-plus/icons'
-import {} from 'vue'
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 $bg: #2d3a4b;
