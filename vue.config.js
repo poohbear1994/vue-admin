@@ -24,5 +24,14 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+  },
+  devServer: {
+    proxy: {
+      // 当地址中包含/api时，触发此代理
+      '/api': {
+        target: 'https://api.imooc-admin.lgdsunday.club/',
+        changeOrigin: true
+      }
+    }
   }
 }
