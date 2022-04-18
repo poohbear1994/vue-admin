@@ -1,4 +1,4 @@
-import request from '../utlis/request'
+import request from '../utils/request'
 
 /**
  * 登录
