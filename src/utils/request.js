@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 import {
   ElMessage
 } from 'element-plus'
@@ -13,8 +14,16 @@ service.interceptors.request.use(
   config => {
     // 添加 icode
     config.headers.icode = '5FD82D1BDB03DBD2'
+    // 在这个位置需要统一的去注入token
+    if (store.getters.token) {
+      // 如果token存在 注入token
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
     // 必须返回 config
     return config
+  },
+  error => {
+    return Promise.reject(error)
   }
 )
 
