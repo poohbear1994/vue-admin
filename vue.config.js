@@ -7,10 +7,12 @@ function resolve(dir) {
 module.exports = {
   chainWebpack(config) {
     // 设置 svg-sprite-loader
+    // svg打包时，不打包 'src/icons'目录
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
       .end()
+    // 打包icons时，对.svg内容进行打包，使用svg-sprite-loader
     config.module
       .rule('icons')
       .test(/\.svg$/)

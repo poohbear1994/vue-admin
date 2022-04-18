@@ -1,39 +1,34 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" auto-complete="on" label-position="left">
+    <el-form class="login-form" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon="https://res.lgdsunday.club/user.svg"></svg-icon>
+          <svg-icon icon="user" />
         </span>
         <el-input
           placeholder="username"
           name="username"
           type="text"
-          tabindex="1"
-          auto-complete="on"
+          v-model="loginForm.username"
         />
       </el-form-item>
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <el-icon>
-            <svg-icon icon="password" />
-          </el-icon>
+          <svg-icon icon="password" />
         </span>
         <el-input
           placeholder="password"
           name="password"
-          tabindex="2"
-          auto-complete="on"
+          :type="passwordType"
+          v-model="loginForm.password"
         />
-        <span class="show-pwd">
-          <el-icon>
-            <svg-icon icon="eye" />
-          </el-icon>
+        <span class="show-pwd" @click="onChangePwdType()">
+          <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
 
@@ -44,7 +39,43 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import { validatePassword } from './rules'
+
+// 数据源
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+// 验证规则
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名为必填项'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
+})
+
+// 处理密码框文本显示状态
+const passwordType = ref('password')
+const onChangePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 $bg: #2d3a4b;
