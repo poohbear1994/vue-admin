@@ -13,6 +13,9 @@ import {
   TOKEN
 } from '@/constant'
 import router from '@/router'
+import {
+  setTimeStamp
+} from '@/utils/auth'
 export default {
   namespaced: true,
   state: () => ({
@@ -42,6 +45,8 @@ export default {
           })
           .then(data => {
             this.commit('user/setToken', data.token)
+            // 用缓存记录下token保存的时间
+            setTimeStamp()
             resolve()
           })
           .catch(err => {
