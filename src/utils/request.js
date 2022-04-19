@@ -55,7 +55,16 @@ service.interceptors.response.use(
     }
   },
   error => {
-    // TODO: 将来处理 token 超时问题
+    // 如果被顶号，主动退出登陆
+    if (
+      error.response &&
+      error.response.data &&
+      // 这里的状态码对应到被顶号，如果被顶号
+      error.response.data.code === 401
+    ) {
+      // 退出登录
+      store.dispatch('user/logout')
+    }
     ElMessage.error(error.message) // 提示错误信息
     return Promise.reject(error)
   }
