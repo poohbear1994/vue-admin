@@ -6,11 +6,13 @@ import {
 import md5 from 'md5'
 import {
   setItem,
-  getItem
+  getItem,
+  removeAllItem
 } from '@/utils/storage'
 import {
   TOKEN
 } from '@/constant'
+import router from '@/router'
 export default {
   namespaced: true,
   state: () => ({
@@ -50,6 +52,15 @@ export default {
     async getUserInfo(context) {
       const res = await getUserInfo()
       this.commit('user/setUserInfo', res)
+    },
+    logout() {
+      // 清除vuex缓存，初始化用户信息与token
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      // 清除loacalhost缓存
+      removeAllItem()
+      // 跳转到登录页
+      router.push('/login')
     }
   }
 }
