@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: () => ({
-    sidebarOpened: false
+    sidebarOpened: true
   }),
   mutations: {
     triggerSidebarOpened(state) {
