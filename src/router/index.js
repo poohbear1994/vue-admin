@@ -136,5 +136,4 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [...publicRoutes, ...privateRoutes]
 })
-
 export default router
