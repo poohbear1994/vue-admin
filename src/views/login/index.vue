@@ -8,6 +8,7 @@
     >
       <div class="title-container">
         <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <lang-select class="lang-select" />
       </div>
 
       <el-form-item prop="username">
@@ -53,6 +54,7 @@ import { ref } from 'vue'
 import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 import router from '@/router'
+import LangSelect from '@/components/LangSelect'
 import { useI18n } from 'vue-i18n'
 
 // 数据源
