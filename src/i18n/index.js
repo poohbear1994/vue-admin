@@ -1,22 +1,28 @@
 import {
   createI18n
 } from 'vue-i18n'
+import enLocale from 'element-plus/lib/locale/lang/en'
+import zhLocale from 'element-plus/lib/locale/lang/zh-cn'
+import mZhLocale from './lang/zh'
+import mEnLocale from './lang/en'
 const messages = {
   en: {
+    el: enLocale.el,
     msg: {
-      test: 'hello world'
+      ...mEnLocale
     }
   },
   zh: {
+    el: zhLocale.el,
     msg: {
-      test: '你好世界'
+      ...mZhLocale
     }
   }
 }
 
 const locale = 'en'
 
-export const i18n = createI18n({
+const i18n = createI18n({
   // 使用 Composition API 模式，则需要将其设置为false
   legacy: false,
   // 全局注入 $t 函数
@@ -25,6 +31,4 @@ export const i18n = createI18n({
   messages
 })
 
-export default app => {
-  app.use(i18n)
-}
+export default i18n

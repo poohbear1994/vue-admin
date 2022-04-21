@@ -108,7 +108,7 @@ const publicRoutes = [{
   component: () => import('@/views/login/index.vue')
 }, {
   path: '/',
-  component: () => layout,
+  component: layout,
   redirect: '/profile',
   children: [{
       path: '/profile',

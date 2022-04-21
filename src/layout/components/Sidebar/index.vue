@@ -7,7 +7,7 @@
         src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
       />
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">
-        <span>{{ $t('msg.test') }}</span>
+        <span>ljx</span>
       </h1>
     </div>
     <el-scrollbar>
