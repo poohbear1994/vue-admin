@@ -18,10 +18,4 @@ defineProps({
 })
 </script>
 
-<style lang="scss" scoped>
-.sub-el-icon {
-  color: currentColor;
-  width: 1em;
-  height: 1em;
-}
-</style>
+<style lang="scss" scoped></style>
