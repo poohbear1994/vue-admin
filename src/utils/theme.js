@@ -8,16 +8,10 @@ import axios from 'axios'
  * @param {*} elNewStyle  element-plus 的新样式
  * @param {*} isNewStyleTag 是否生成新的 style 标签
  */
-let isFirstWriteStyle = true
 export const writeNewStyle = elNewStyle => {
-  if (isFirstWriteStyle) {
-    const style = document.createElement('style')
-    style.innerText = elNewStyle
-    document.head.appendChild(style)
-    isFirstWriteStyle = false
-  } else {
-    document.head.lastChild.innerText = elNewStyle
-  }
+  const style = document.createElement('style')
+  style.innerText = elNewStyle
+  document.head.appendChild(style)
 }
 
 /**
@@ -25,13 +19,10 @@ export const writeNewStyle = elNewStyle => {
  * @param primaryColor 传入需要变换成的16进制色值
  */
 export const generateNewStyle = async primaryColor => {
-  console.log('primaryColor:', primaryColor)
   // 根据主色生成色值表
   const colors = generateColors(primaryColor)
-  console.log('colors:', colors)
   // 获取当前 element-plus的默认样式表，并且把需要进行替换的色值打上标记
   let cssText = await getOriginalStyle()
-  console.log('cssText:', cssText)
   // 遍历生成的样式表，在 CSS 的原样式中进行全局替换
   Object.keys(colors).forEach(key => {
     cssText = cssText.replace(
@@ -39,7 +30,6 @@ export const generateNewStyle = async primaryColor => {
       '$1' + colors[key]
     )
   })
-  console.log('cssText:', cssText)
   return cssText
 }
 
