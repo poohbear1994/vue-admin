@@ -45,6 +45,7 @@
         @click="handlerLogin"
         >{{ $t('msg.login.loginBtn') }}</el-button
       >
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
@@ -98,7 +99,7 @@ const store = useStore()
 const loginFormRef = ref(null)
 const handlerLogin = () => {
   // 触发表单校验
-  loginFormRef.value.validate(valid => {
+  loginFormRef.value.validate((valid) => {
     if (!valid) return
     loading.value = true
     // 触发登录动作
@@ -108,7 +109,7 @@ const handlerLogin = () => {
         loading.value = false
         router.push('/')
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
         loading.value = false
       })
