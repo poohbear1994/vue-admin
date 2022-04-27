@@ -1,8 +1,9 @@
 <template>
-  <div class="">导入</div>
+  <upload-excel></upload-excel>
 </template>
 
 <script setup>
+import UploadExcel from '@/components/UploadExcel'
 import {} from 'vue'
 </script>
 
