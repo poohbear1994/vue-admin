@@ -74,8 +74,8 @@
       >
       </el-pagination>
     </el-card>
+    <export-to-excel v-model="exportToExcelVisible"></export-to-excel>
   </div>
-  <export-to-excel v-model="exportToExcelVisible"></export-to-excel>
 </template>
 
 <script setup>
