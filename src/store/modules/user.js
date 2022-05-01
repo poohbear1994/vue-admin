@@ -12,7 +12,9 @@ import {
 import {
   TOKEN
 } from '@/constant'
-import router from '@/router'
+import router, {
+  resetRouter
+} from '@/router'
 import {
   setTimeStamp
 } from '@/utils/auth'
@@ -57,8 +59,11 @@ export default {
     async getUserInfo(context) {
       const res = await getUserInfo()
       this.commit('user/setUserInfo', res)
+      return res
     },
     logout() {
+      // 重置路由表
+      resetRouter()
       // 清除vuex缓存，初始化用户信息与token
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
